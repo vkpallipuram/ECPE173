@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "image_template.h"
 #include "image_processing.h"
-
+#include <sys/time.h>
 int main(int argc, char** argv) {
     
 	// Check that image path and sigma are provided
@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
 
    	// Get image path
    	char* imagePath = argv[1];
+	struct timeval start,stop;
 
    	// Get sigma value
    	char* sigmaConversionError;
@@ -41,18 +42,6 @@ int main(int argc, char** argv) {
 
     char gradientName[] = "gradient.pgm";
     write_image_template(gradientName, gradient, width, height);
-
-    char tempHoriName[] = "temp_horizontal.pgm";
-    write_image_template(tempHoriName, temp_horizontal, width, height);
-
-    char horiName[] = "horizontal.pgm";
-    write_image_template(horiName, horizontal, width, height);
-
-    char tempVertName[] = "temp_vertical.pgm";
-    write_image_template(tempVertName, temp_vertical, width, height);
-
-    char vertName[] = "vertical.pgm";
-    write_image_template(vertName, vertical, width, height);
 
     return 0;
 }
