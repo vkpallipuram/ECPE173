@@ -114,12 +114,18 @@ int main(int argc, char ** argv){
 	mag = (float *)malloc(sizeof(float)*width*height);	
 	dir = (float *)malloc(sizeof(float)*width*height);	
 
-	/* TBD: Allocate Device Pointers using cudaMalloc */
+	
 
 
 	Gaussian_Kernel(&G_Kernel,&w,atof(argv[2]));
 	/* creat the Gaussian Derivative Kernel */
 	Gaussian_Deri_Kernel( &GD_Kernel, &w, atof(argv[2])); 
+	
+	/* TBD: Allocate Device Pointers using cudaMalloc */
+	
+	/* TBD: cudaMemcpy H2D the image (p) and the Gaussian kernel, and the derivative Kernel */
+	
+	/* TBD: set dimBlock2(16,16) and create 2D dimGrid to cover the entire image (height x width) */
 	
 	/* Horizontal Gradient */ 
 	Convolve(p, temp_horizontal, width, height, w, 1, G_Kernel);	
@@ -132,6 +138,10 @@ int main(int argc, char ** argv){
 	/* Direction */
 	direction(dir, vertical, horizontal,width, height);
 	/* end the time counter */
+	
+	/* TBD: cudaMemcpy D2H the magnitude (d_mag) and direction (d_dir) */
+	
+	
 	gettimeofday(&end, NULL);
 	/* print the time results million second */
 	printf("%ldus\n", ((end.tv_sec * 1000000 + end.tv_usec)
