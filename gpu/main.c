@@ -91,6 +91,7 @@ int main(int argc, char ** argv){
 	gettimeofday(&start, NULL);
 	/* creat the Gaussian Kernel */
 	int w;
+	int gpunumber=atoi(argv[3])%4;
 
 	/*Host Pointers*/ 
 	float *G_Kernel;
@@ -99,6 +100,8 @@ int main(int argc, char ** argv){
 	float *temp_vertical, *vertical;
 	float *mag;
 	float *dir;
+
+	cudaSetDevice(gpunumber);
 
 	/* TBD: Declare Device Pointers for the corresponding Host Pointers */
 
