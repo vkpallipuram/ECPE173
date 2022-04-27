@@ -90,16 +90,19 @@ int main(int argc, char ** argv){
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 	/* creat the Gaussian Kernel */
-	float *G_Kernel;
 	int w;
 
 	/*Host Pointers*/ 
+	float *G_Kernel;
+	float *GD_Kernel;
 	float *temp_horizontal, *horizontal;
 	float *temp_vertical, *vertical;
 	float *mag;
 	float *dir;
 
-	/*Allocate Host Pointers using malloc */
+	/* TBD: Declare Device Pointers for the corresponding Host Pointers */
+
+	/* TBD: Allocate Host Pointers using malloc */
 	temp_horizontal = (float *)malloc(sizeof(float)*width*height);	
 	horizontal = (float *)malloc(sizeof(float)*width*height);	
 	temp_horizontal = (float *)malloc(sizeof(float)*width*height);	
@@ -108,12 +111,11 @@ int main(int argc, char ** argv){
 	mag = (float *)malloc(sizeof(float)*width*height);	
 	dir = (float *)malloc(sizeof(float)*width*height);	
 
-	/*Allocate Device Pointers using cudaMalloc */
+	/* TBD: Allocate Device Pointers using cudaMalloc */
 
 
 	Gaussian_Kernel(&G_Kernel,&w,atof(argv[2]));
 	/* creat the Gaussian Derivative Kernel */
-	float *GD_Kernel;
 	Gaussian_Deri_Kernel( &GD_Kernel, &w, atof(argv[2])); 
 	
 	/* Horizontal Gradient */ 
