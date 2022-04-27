@@ -26,7 +26,7 @@ all: $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(EXECUTABLE)
 
-%.o: %.c $(HEADERS)
+%.o: %.cu $(HEADERS)
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
