@@ -83,6 +83,11 @@ void direction(float * dir, float *vertical, float *horizontal, int width, int h
 
 
 int main(int argc, char ** argv){
+	
+	if(argc!=4){
+		printf("\n correct invocation: ./Canny_Edge LENA_IMAGES/Lenna_org_2048.pgm 0.6 989");	
+	}
+	
 	int width, height;
 	float *p; //image
 	read_image_template<float>(argv[1], &p, &width, &height);
